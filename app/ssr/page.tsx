@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -31,24 +29,12 @@ async function getServerData() {
   }
 }
 
-import { useEffect } from "react"
-import { useClient } from "next/client"
-
-function ScrollToTop() {
-  useClient()
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  return null
-}
-
 export default async function SSRPage() {
   // This runs on the server for every request
   const data = await getServerData()
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      <ScrollToTop />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <Link href="/" scroll={true}>
